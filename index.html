@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Drx.Nasir Husain</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- AOS (Animation on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fcff;
+            color: #212529;
+            scroll-behavior: smooth;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #0d6efd;
+        }
+
+        .navbar a {
+            color: white !important;
+            font-weight: 500;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background: #0d6efd;
+            padding: 60px 20px;
+            transition: left 0.3s;
+            z-index: 999;
+        }
+
+        #sidebar.active {
+            left: 0;
+        }
+
+        #sidebar a {
+            display: block;
+            color: white;
+            margin: 15px 0;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 86, 179, 0.7), rgba(0, 179, 152, 0.7)),
+                url("https://images.unsplash.com/photo-1587019705911-167800492489?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center/cover;
+            color: white;
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-left: 100px;
+            margin-top: 70px;
+        }
+
+        #typed {
+            margin-left: 120px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: 700;
+            color: #004085;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Skills */
+        .skill-bar {
+            height: 10px;
+            border-radius: 5px;
+            background: #e9ecef;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: #0d6efd;
+            transition: width 2s ease;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d6efd;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #121212;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .section-title {
+            color: #66d9ff;
+        }
+
+        body.dark-mode .navbar,
+        body.dark-mode #sidebar,
+        body.dark-mode footer {
+            background: #212529;
+        }
+
+        body.dark-mode .card {
+            background: #1e1e1e;
+            color: #fff;
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .skill-progress {
+            background: #66d9ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" href="#">Drx. Nasir Husain</a>
+            <button class="btn btn-outline-light d-lg-none" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse d-none d-lg-block">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><button class="btn btn-sm btn-warning ms-3" id="darkModeToggle"><i
+                                class="fas fa-moon"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar (Mobile Menu) -->
+    <div id="sidebar">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+        <a href="javascript:void(0)" id="closeSidebar">❌ Close</a>
+    </div>
+
+    <!-- Hero -->
+    <header><div style="display: inline-flex;">
+        <div>
+            <h1>Hi, I’m <span class="text-warning">Drx.Nasir Husain</span></h1>
+             <h4><span id="typed"></span></h4></div>
+        <!-- <div>
+            <img src="nasir.jpg" alt="" style="width: 300px; height: 400px; margin-left: 100px; ">
+       
+        </div> -->
+        <div class="hero-card tilt" data-aos="zoom-in" style="margin-left: 80px;">
+                <img src="https://images.unsplash.com/photo-1529336953121-ad5a0d43d0d2?q=80&w=1400&auto=format&fit=crop"
+                    alt="">
+                <div class="small" style="margin-top:12px">
+                    <img src="nasir.jpg" alt=""
+                        style="width:230px ;height:230px;object-fit:cover;display:block;margin:0 auto;box-shadow:0 20px 20px 2px rgba(0,0,0,.45)">
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </header>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">About Me</h2>
+            <p class="text-center">I am a dedicated Pharmacist and Assistant Professor with expertise in clinical
+                practice, drug safety, and patient counseling. Passionate about teaching, mentoring, and pharmaceutical
+                research, I strive to optimize medication therapy, inspire students, and advance healthcare through
+                evidence-based practice, ethical responsibility, and compassionate patient care. With expertise in
+                clinical pharmacy, I bridge the gap between science and patient care.</p>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="bg-light">
+        <div class="container" data-aos="fade-right">
+            <h2 class="section-title">Education</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <h5>Bachelor of Pharmacy (B.Pharm)</h5>
+                        <p>Integral University, 2015 - 2019</p>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="card p-3">
+                        <h5>Masters of Pharmacy(M.Pharm)</h5>
+                        <p>Glocal University, 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container" data-aos="fade-left">
+            <h2 class="section-title">Experience</h2>
+            <div class="card p-4">
+                <h5>Assitant Professor </h5>
+                <p>City College Of Pharmacy(Present)</p>
+                <ul>
+                    <li>Delivered lectures and tutorials on Pharmacology, Pharmaceutics, and Clinical Pharmacy.</li>
+                    <li>Guided undergraduate and postgraduate students in research projects and dissertations.</li>
+                    <li>Published research papers in reputed pharmaceutical journals.</li>
+                    <li>Developed innovative teaching materials and digital learning resources.</li>
+                    <li>Organized workshops, health awareness programs, and student development activities.</li>
+                    <li>Collaborated with healthcare professionals on interdisciplinary research projects.</li>
+                </ul>
+            </div> <br>
+            <div class="card p-4">
+                <h5>Clinical Pharmacist </h5>
+                <p>Chandan Hospital (2019 - 2021)</p>
+                <ul>
+                    <li>Conducted patient counseling sessions</li>
+                    <li>Reviewed prescriptions for safety & accuracy</li>
+                    <li>Worked with doctors for treatment optimization</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="bg-light">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="section-title">Skills</h2>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
+            </div>
+            <p>Clinical Pharmacy – 90%</p>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+            </div>
+            <p>Drug Safety & Regulations – 85%</p>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+            </div>
+            <p>Patient Counseling – 80%</p>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 95%"></div>
+            </div>
+            <p>Pharmacovigilance – 95%</p>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 95%"></div>
+            </div>
+            <p>Clinical & Community Pharmacy Knowledge – 95%</p>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+            </div>
+            <p>Examination & Assessment Methods– 90%</p>
+        </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Research & Publications</h2>
+            <div class="card p-4">
+                <h2>Formulation and Assessment of Niosomal Gel Incorporating a Neomycin, Clobetasol and Miconazole Combination</h2>
+                <p>Submitted at Glocal University</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="bg-light">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <h5>Drug Awareness Campaign</h5>
+                        <p>Conducted sessions to raise awareness about antibiotic resistance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <h5>Health Camp Organizer</h5>
+                        <p>Organized free health check-up camps for rural communities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="section-title">Achievements</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Best Professor of Pharmacy Award – 2024</li>
+                <li class="list-group-item">Top 10 Pharmacist  – Chandan Hospital, 2020</li>
+                <li class="list-group-item">Scholarship for Academic Excellence – Integral University</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-light">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Contact</h2>
+            <div class="text-center">
+                <p><i class="fas fa-envelope"></i> Nasirhusain@email.com</p>
+                <p><i class="fas fa-phone"></i> +91 9695660226</p>
+                <p><i class="fab fa-linkedin"></i> linkedin.com/in/nasirhusain</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Drx. Nasir Husain| Pharmacist</p>
+    </footer>
+
+    <!-- JS Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        // Animations
+        AOS.init();
+        new Typed('#typed', {
+            strings: ["Clinical Pharmacist", "Researcher", "Assistant Professor", "Pharmaceutical Educator"],
+            typeSpeed: 70,
+            backSpeed: 50,
+            loop: true
+        });
+
+        // Sidebar
+        const sidebar = document.getElementById('sidebar');
+        document.getElementById('sidebarToggle').addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+        document.getElementById('closeSidebar').addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+
+        // Dark Mode
+        const darkToggle = document.getElementById('darkModeToggle');
+        darkToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkToggle.innerHTML = document.body.classList.contains('dark-mode')
+                ? '<i class="fas fa-sun"></i>'
+                : '<i class="fas fa-moon"></i>';
+        });
+    </script>
+</body>
+
+</html>
